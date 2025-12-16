@@ -8,5 +8,5 @@ LOOP:
     LD R0, (0xFF)
     LD R1, (0xFE)
     ADD R0, R1
-    MOV (0xFC), R0 
+    ST (0xFC), R0 
     jr LOOP
