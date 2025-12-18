@@ -46,6 +46,8 @@ GET_TEMP:
       CMP R1, 0
       JZS LEQ
 
+      CMP R0, 255
+      JZS END
       INC R0
       ST (0xF1), R0
       LD R1, (0xF1)
