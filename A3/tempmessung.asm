@@ -6,9 +6,7 @@
 .EQU buffer_register 2   ; Register zwischenspeichern
 .EQU bit4_mask 16        ; Konstante um 4. Bit zu masken
 .EQU platine 241         ; Adresse um DAC2 und Comparator anzusprechen
-.ORG 0x20                ; Programm startpunkt 
-
-;---------------------------------------------------------------------------------
+;-------------------------------------------------------------------------------------------
 
 TEMPMESS:
     LD R0, (last_value)
@@ -39,7 +37,7 @@ INC_REVERT:
     JMP STORE
 
 NO_SWITCH: 
-    CMP R2, 0x10        
+    CMP R2, bit4_mask       
     JZS INC_VALUE        ; Case: Inkrementiere, da U_dac < U_sens
     
     DEC R0              ; Case: Dekrementiere, da U_dac >= U_sens
@@ -56,4 +54,4 @@ STORE:
     ST (last_value), R0   ; Speichern des finalen R0 Wertes in Adresse 0x00
     ST (last_state), R2
     
-    RET
+    JMP LOOP
