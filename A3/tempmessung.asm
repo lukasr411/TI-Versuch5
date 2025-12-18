@@ -6,11 +6,15 @@
 .EQU buffer_register 2   ; Register zwischenspeichern
 .EQU bit4_mask 16        ; Konstante um 4. Bit zu masken
 .EQU platine 241         ; Adresse um DAC2 und Comparator anzusprechen
+.EQU zero 0
 ;-------------------------------------------------------------------------------------------
 
 TEMPMESS:
-    LD R0, (last_value)
-    LD R1, (last_state)
+    LD R0, zero
+    ST (last_value), R0
+
+    LD R1, zero
+    ST (last_state), R1
 
 LOOP:
     ST (platine), R0            ; DAC Wert für R0 prüfen
