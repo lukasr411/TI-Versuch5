@@ -25,13 +25,13 @@ MAIN:
         JR GREATER_EQ_FD
 
     LESS_FD:
-        LD R1, 0xFE
+        LD R1, (0xFE)
         ST (0xF0), R1
         ST (0xFF), R1
         JR MAIN
 
     GREATER_EQ_FD:
-        LD R1, 0xFF
+        LD R1, (0xFF)
         ST (0xF0), R1
         ST (0xFF), R1
         JR MAIN
